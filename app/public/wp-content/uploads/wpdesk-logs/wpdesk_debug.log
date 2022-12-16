@@ -1,0 +1,13 @@
+[2022-09-15 06:15:40] wpdesk.DEBUG: Sender payload: {"click_action":"plugin_deactivation","plugin":"shopmagic-for-woocommerce\/shopMagic.php","plugin_name":"ShopMagic for WooCommerce","reason":"other","additional_info":"PHP version issued"} {"source":"wpdesk-sender"} []
+[2022-09-15 06:15:42] wpdesk.DEBUG: Sender response: {"headers":[],"body":"","response":{"code":false,"message":false},"cookies":[],"http_response":null} {"source":"wpdesk-sender"} []
+[15-Sep-2022 06:15:42 UTC] PHP Warning:  Use of undefined constant AUTH_SALT - assumed 'AUTH_SALT' (this will throw an Error in a future version of PHP) in C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-content\plugins\shopmagic-for-woocommerce\src\Frontend\Interceptor\CurrentCustomer.php on line 87
+[15-Sep-2022 06:15:42 UTC] PHP Stack trace:
+[15-Sep-2022 06:15:42 UTC] PHP   1. {main}() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-admin\admin-ajax.php:0
+[15-Sep-2022 06:15:42 UTC] PHP   2. wp_die() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-admin\admin-ajax.php:206
+[15-Sep-2022 06:15:42 UTC] PHP   3. _ajax_wp_die_handler() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-includes\functions.php:3713
+[15-Sep-2022 06:15:42 UTC] PHP   4. shutdown_action_hook() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-includes\load.php:0
+[15-Sep-2022 06:15:42 UTC] PHP   5. do_action() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-includes\load.php:1102
+[15-Sep-2022 06:15:42 UTC] PHP   6. WP_Hook->do_action() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-includes\plugin.php:476
+[15-Sep-2022 06:15:42 UTC] PHP   7. WP_Hook->apply_filters() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-includes\class-wp-hook.php:331
+[15-Sep-2022 06:15:42 UTC] PHP   8. WPDesk\ShopMagic\Frontend\Interceptor\CurrentCustomer->remember_tracking_key() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-includes\class-wp-hook.php:307
+[15-Sep-2022 06:15:42 UTC] PHP   9. WPDesk\ShopMagic\Frontend\Interceptor\CurrentCustomer->encode_tracking_data() C:\Users\KarmaLn\Local Sites\fruit-shope\app\public\wp-content\plugins\shopmagic-for-woocommerce\src\Frontend\Interceptor\CurrentCustomer.php:184
