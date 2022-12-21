@@ -16,109 +16,109 @@ if (!function_exists('getQuestionType')) {
                 "question_type"=>"Message",
                 "question_rule"=>"",
                 "label"=>"Message",
-                "icon"=>"bi bi-chat-dots"
+                "icon"=>"bi-chat-dots"
             );
         $data[] =   array(
                 "question_type"=>"MultiChoice",
                 "question_rule"=>"",
                 "label"=>"Multi Choice",
-                "icon"=>"bi bi-check-circle"
+                "icon"=>"bi-check-circle"
             );
         $data[]=array(
                 "question_type"=>"TextQuestion",
                 "question_rule"=>"",
                 "label"=>"Text Question",
-                "icon"=>"bi bi-patch-question"
+                "icon"=>"bi-patch-question"
             );
         $data[]=array(
                 "question_type"=>"Email",
                 "question_rule"=>"/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i",
                 "label"=>"Email",
-                "icon"=>"bi bi-envelope"
+                "icon"=>"bi-envelope"
             );
         $data[]=array(
                 "question_type"=>"PhoneNumber",
                 "question_rule"=>"/^[1-9][0-9]{10}$/",
                 "label"=>"Phone Number",
-                "icon"=>"bi bi-telephone"
+                "icon"=>"bi-telephone"
             );
         $data[]=array(
                 "question_type"=>"Appointment",
                 "question_rule"=>"",
                 "label"=>"Appointment",
-                "icon"=>"bi bi-calendar2-check"
+                "icon"=>"bi-calendar2-check"
             );
         $data[]=array(
                 "question_type"=>"Yes/No",
                 "question_rule"=>"",
                 "label"=>"Yes/No",
-                "icon"=>"bi bi-check-circle"
+                "icon"=>"bi-check-circle"
             );
         $data[]=array(
                 "question_type"=>"MultiSelect",
                 "question_rule"=>"",
                 "label"=>"Multi Select",
-                "icon"=>"bi bi-check-square"
+                "icon"=>"bi-check-square"
             );
         $data[]=array(
                 "question_type"=>"List",
                 "question_rule"=>"",
                 "label"=>"List",
-                "icon"=>"bi bi-list-task"
+                "icon"=>"bi-list-task"
             );
         $data[]=array(
                 "question_type"=>"Number",
                 "question_rule"=>"/^[1-9][0-9]$/",
                 "label"=>"Number",
-                "icon"=>"bi bi-hash"
+                "icon"=>"bi-hash"
             );
         $data[]=array(
                 "question_type"=>"Range",
                 "question_rule"=>"/^[1-9][0-9]$/",
                 "label"=>"Range",
-                "icon"=>"bi bi-menu-button-wide"
+                "icon"=>"bi-menu-button-wide"
             );
         $data[]=array(
                 "question_type"=>"Rating",
                 "question_rule"=>"",
                 "label"=>"Rating",
-                "icon"=>"bi bi-star"
+                "icon"=>"bi-star"
             );
         $data[]=array(
                 "question_type"=>"Opinion",
                 "question_rule"=>"",
                 "label"=>"Opinion Scale",
-                "icon"=>"bi bi-speedometer2"
+                "icon"=>"bi-speedometer2"
             );
         $data[]=array(
                 "question_type"=>"Date",
                 "question_rule"=>"",
                 "label"=>"Date",
-                "icon"=>"bi bi-calendar"
+                "icon"=>"bi-calendar"
             );
         $data[]=array(
                 "question_type"=>"File",
                 "question_rule"=>"",
                 "label"=>"File Upload",
-                "icon"=>"bi bi-upload"
+                "icon"=>"bi-upload"
             );
         $data[]=array(
                 "question_type"=>"Links",
                 "question_rule"=>"",
                 "label"=>"Links",
-                "icon"=>"bi bi-link"
+                "icon"=>"bi-link"
             );
         $data[]=array(
                 "question_type"=>"ThankYou",
                 "question_rule"=>"",
                 "label"=>"Thank You",
-                "icon"=>"bi bi-hand-thumbs-up"
+                "icon"=>"bi-hand-thumbs-up"
             );
         $data[]=array(
                 "question_type"=>"WhatsApp",
                 "question_rule"=>"",
                 "label"=>"WhatsApp",
-                "icon"=>"bi bi-whatsapp"
+                "icon"=>"bi-whatsapp"
             );
         
       

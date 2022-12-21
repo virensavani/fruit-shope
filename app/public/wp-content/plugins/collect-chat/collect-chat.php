@@ -29,19 +29,25 @@ class CollectChat
     function adminMenu()
     {
         // chatbot setting Menu
-        $mainPageHook = add_menu_page('Build', 'Build', 'manage_options', 'build', array($this, 'scriptPage'), plugin_dir_url(__FILE__) . 'custom.svg', '50');
-        add_submenu_page('build', 'Script', 'Script', 'manage_options', 'script', array($this, 'scriptPage'));
+        $mainPageHook = add_menu_page('Script', 'Build', 'manage_options', 'build', array($this, 'scriptPage'), plugin_dir_url(__FILE__) . 'custom.svg', '50');
+        // add_submenu_page('build', 'Script', 'Script', 'manage_options', 'script', array($this, 'scriptPage'));
         add_action("load-{$mainPageHook}", array($this, 'pageAssets'));
     }
 
     function pageAssets()
     {
-        wp_enqueue_script('font-awesome',  plugin_dir_url(__FILE__) .'js/bootstrap.bundle.min.js', NULL, '1.0', true);
-        wp_enqueue_style('chatbot_custom_css', plugin_dir_url(__FILE__) . 'css/bootstrap.min.css');
-        wp_enqueue_style('chatbot_bootstarp_theme', plugin_dir_url(__FILE__) . 'css/bootstrap-theme.min.css');
+        wp_enqueue_script('jquery_min',  plugin_dir_url(__FILE__) .'js/jquery.min.js', NULL, '1.0', true);
+        wp_enqueue_script('jquery_easing',  plugin_dir_url(__FILE__) .'js/jquery.easing.js', NULL, '1.0', true);
+        wp_enqueue_script('jquery_ui_min',  plugin_dir_url(__FILE__) .'js/jquery-ui.min.js', NULL, '1.0', true);
+        wp_enqueue_script('bootstrap_min',  plugin_dir_url(__FILE__) .'js/bootstrap.min.js', NULL, '1.0', true);
+
+
+        wp_enqueue_style('jquery_ui_bootstrap', plugin_dir_url(__FILE__) . 'css/jqueryuibootstrap.css');
+        wp_enqueue_style('bootstrap_min', plugin_dir_url(__FILE__) . 'css/bootstrap.min.css');
+        wp_enqueue_style('font-awesome','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css');
+        wp_enqueue_style('icon_css','https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css');
         wp_enqueue_style('custom_css', plugin_dir_url(__FILE__) . 'css/custom.css');
 
-        wp_enqueue_style('jquery_modal_css', '//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css');
         wp_localize_script('main-chatbot-js', 'chatbotData', array(
             'root_url' => get_site_url(),
 
