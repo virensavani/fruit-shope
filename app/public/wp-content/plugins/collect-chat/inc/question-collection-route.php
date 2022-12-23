@@ -13,11 +13,12 @@ function question_collection_table()
 
     $sql = "CREATE TABLE IF NOT EXISTS $table_name (
         id bigint(20) NOT NULL AUTO_INCREMENT,
-        question_sequence NOT NULL, 
+        subscriber_id int(20)  NULL DEFAULT 0,
+        question_sequence int(11) NOT NULL, 
         question_type varchar(255) NOT NULL,
-        question_name  varchar(255)  NOT NULL,
-        question_option json NULL DEFAULT [],
-        question_config json NULL DEFAULT [],
+        question  varchar(255) NOT NULL,
+        question_option json NULL,
+        question_config json NULL,
         PRIMARY KEY id (id)
     ) $charset_collate;";
 
@@ -28,8 +29,8 @@ function question_collection_table()
 add_action('init', 'question_collection_table');
 
 // Create  Question
-add_action('admin_post_createquestioncollection', 'createQuestionCollection');
-add_action('admin_post_nopriv_createquestioncollection',  'createQuestionCollection');
+add_action('admin_post_createcollection', 'createQuestionCollection');
+add_action('admin_post_nopriv_createcollection',  'createQuestionCollection');
 
 function createQuestionCollection()
 {
@@ -39,8 +40,8 @@ function createQuestionCollection()
         $table_name = $wpdb->prefix . "question_collection";
 
         $question['question_sequence'] = sanitize_text_field($_POST['question_sequence']);
-        $question['question'] = sanitize_text_field($_POST['question']);
-        $question['question_type'] = sanitize_text_field($_POST['question_type']);
+        $question['question'] = sanitize_text_field($_POST['questionName']);
+        $question['question_type'] = sanitize_text_field($_POST['questionType']);
         $question['question_option'] = sanitize_text_field($_POST['option']);
         $wpdb->insert($table_name, $question);
         wp_safe_redirect(admin_url('admin.php?page=question'));
@@ -51,9 +52,9 @@ function createQuestionCollection()
 }
 
 //Question collection API
-add_action('rest_api_init', 'uiConfigRoutes');
+add_action('rest_api_init', 'questionConfigRoutes');
 
-function uiConfigRoutes()
+function questionConfigRoutes()
 {
     register_rest_route('chatbot/v1', '/get-all-question', array(
         'methods' => 'GET',
@@ -62,23 +63,35 @@ function uiConfigRoutes()
 
     register_rest_route('chatbot/v1', '/get-question/(?P<id>\d+)', array(
         'methods' => 'GET',
-        'callback' => 'getQuestion'
+        'callback' => 'getQuestionCollection'
     ));
 
-    register_rest_route('chatbot/v1', '/create-question', array(
+    register_rest_route('chatbot/v1', '/fetch_ajax_content', array(
         'methods' => 'POST',
-        'callback' => 'createQuestion'
+        'callback' => 'fetch_ajax_content'
     ));
 
-    register_rest_route('chatbot/v1', '/delete-question/(?P<id>\d+)', array(
-        'methods' => 'DELETE',
-        'callback' => 'createQuestion'
-    ));
+    // register_rest_route('chatbot/v1', '/delete-question/(?P<id>\d+)', array(
+    //     'methods' => 'DELETE',
+    //     'callback' => 'createQuestion'
+    // ));
 
-    register_rest_route('chatbot/v1', '/edit-question', array(
-        'methods' => 'POST',
-        'callback' => 'editQuestion'
-    ));
+    // register_rest_route('chatbot/v1', '/edit-question', array(
+    //     'methods' => 'POST',
+    //     'callback' => 'editQuestion'
+    // ));
+}
+
+function fetch_ajax_content() {
+
+    if ( isset( $_POST ) ) {
+        $id = $_POST['id'];
+        $page = get_page( $id );
+
+        $html = get_template_part(plugin_dir_url( )."template-parts/content-".$id);
+        return $html;
+    }
+    
 }
 
 function getAllQuestion(){
@@ -96,7 +109,7 @@ function getAllQuestion(){
     return wp_send_json_success($response);
 }
 
-function getQuestion(){
+function getQuestionCollection(){
     global $wpdb;
     $table_name = $wpdb->prefix . "question_collection";
     $id = urldecode($request->get_param( 'id' ));

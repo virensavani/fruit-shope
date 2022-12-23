@@ -9,7 +9,7 @@
 */
 require_once plugin_dir_path(__FILE__) . 'inc/question-type.php';
 require_once plugin_dir_path(__FILE__) . 'question-script/script-page.php';
-// require_once plugin_dir_path(__FILE__) . 'inc/question-collection-route.php';
+require_once plugin_dir_path(__FILE__) . 'inc/question-collection-route.php';
 require_once plugin_dir_path(__FILE__) . 'question-script/addQuestion.php';
 
 // function add_cors_http_header()
@@ -35,7 +35,6 @@ function my_theme_enqueue_styles(){
 add_action('admin_head' , 'my_theme_enqueue_styles');
 
 // main class started
-
 class CollectChat
 {
     function __construct()
