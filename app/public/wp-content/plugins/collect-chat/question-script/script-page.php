@@ -1,10 +1,8 @@
 <?php 
-
 function scriptPage(){
     global $wpdb;
     $table = $wpdb->prefix . "question_types";
     $result = $wpdb->get_results("SELECT * FROM $table" ,ARRAY_A );
-    // pr_exit($result);
 ?>
 <!-- <section class="layout site-layout site-layout-collapsed site-layout-expanded "> -->
 <main class="layout-content main-content">
@@ -15,7 +13,7 @@ function scriptPage(){
                     <div class="row flex">
                         <?php foreach($result as $data) { 
                         ?>
-                        <div class="col col-12">
+                        <div class="col scr-col-12">
                             <div  draggable="true">
                                 <div class="question-name" id="<?php echo $data['id'];?>">
                                     <div class="card card-bordered card-hoverable question-type">
