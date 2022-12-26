@@ -65,7 +65,7 @@ function addQuestion() {
                             </div>
                         </div>
                     </div>
-                    <div class="content"></div>
+                    <div class="question-content"></div>
                     <div class="row">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary float-end" name="submit" id="submit">Submit</button>
@@ -108,10 +108,13 @@ $('.option').hide();
                     'action' : 'fetch_ajax_content',
                     'id' : questionType
                 },
+                dataType: 'html',
                 success:function(data) {
-                    $('.content').remove();
-                    $('.content').append(data);
+                   console.log(data);
+                    $('.question-content').html('');
+                    $('.question-content').html(data);
                 }
+
             });
             if(questionType == "Message"){
                 $(".skipBackBtn").hide();

@@ -1,6 +1,6 @@
 <?php
 include(plugin_dir_path(__FILE__) .'\helper.php');
-
+define('PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
 // Question Collection table create
 function question_collection_table()
 {
@@ -86,12 +86,42 @@ function fetch_ajax_content() {
 
     if ( isset( $_POST ) ) {
         $id = $_POST['id'];
-        $page = get_page( $id );
-
-        $html = get_template_part(plugin_dir_url( )."template-parts/content-".$id);
-        return $html;
+        return mec_get_admin_menu_page('content',$id);
     }
     
+}
+function mec_get_admin_menu_page($slug, $name = null) {
+
+    do_action("mec_get_admin_menu_page_{$slug}", $slug, $name);
+
+    $templates = array();
+    if (isset($name))
+        $templates[] = "{$slug}-{$name}.php";
+
+    $templates[] = "{$slug}.php";
+    mec_locate_admin_menu_template($templates, true, false);
+}
+
+/* Extend locate_template from WP Core 
+* Define a location of your plugin file dir to a constant in this case = PLUGIN_DIR_PATH 
+* Note: PLUGIN_DIR_PATH - can be any folder/subdirectory within your plugin files 
+*/ 
+function mec_locate_admin_menu_template($template_names, $load = false, $require_once = true ) 
+{ 
+    $located = ''; 
+    foreach ( (array) $template_names as $template_name ) { 
+        if ( !$template_name ) continue; 
+        /* search file within the PLUGIN_DIR_PATH only */ 
+        if ( file_exists(PLUGIN_DIR_PATH . '/question-template-parts/' . $template_name)) { 
+            $located = PLUGIN_DIR_PATH . '/question-template-parts/' . $template_name; 
+            break; 
+        } 
+    }
+    if ( $load && '' != $located )
+    
+    load_template( $located, $require_once );
+
+    return $located;
 }
 
 function getAllQuestion(){
